@@ -13,7 +13,7 @@ Trabalho prático de Sistemas de Informação: desenho de um modelo multidimensi
 | E-REDES | CSV | Energia ativa faturada | mês × freguesia × nível de tensão | nov/2020 a mai/2026 |
 | IPMA | 18 CSV (1 por distrito) | Temperatura mín./média/máx. + normais climatológicas | mês × distrito | 1981 a 2026 |
 | Pordata (INE) | XLSX | População residente | ano × município | 2020 a 2025 |
-| UPAC mensal (E-REDES) | XLSX | Unidades de produção para autoconsumo (instalações e potência) | mês × freguesia × tecnologia × nível de tensão | jan/2023 a set/2026 |
+| UPAC mensal (E-REDES) | CSV (originalmente XLSX, convertido no ETL) | Unidades de produção para autoconsumo (instalações e potência) | mês × freguesia × tecnologia × nível de tensão | jan/2023 a set/2026 |
 
 ## Modelo
 

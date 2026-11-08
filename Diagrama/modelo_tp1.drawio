@@ -1,0 +1,158 @@
+<mxfile host="app.diagrams.net">
+  <diagram id="tp1v2" name="Modelo multidimensional TP1 v2">
+    <mxGraphModel dx="1839" dy="3520" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1654" pageHeight="2336" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" parent="1" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;" value="&lt;b&gt;TP1 SI - Modelo multidimensional (constelação de factos, geografia e tensão em floco de neve)&lt;/b&gt;" vertex="1">
+          <mxGeometry height="30" width="1000" x="327" y="-30" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_nivel_tensao" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;dim_nivel_tensao&lt;/b&gt;&lt;hr&gt;PK id_nivel_tensao (1 a 4)&lt;br&gt;sigla (BTN, BTE, MT, AT)&lt;br&gt;FK id_grupo_tensao" vertex="1">
+          <mxGeometry height="100" width="290" x="43" y="49" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_grupo_tensao" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;dim_grupo_tensao&lt;/b&gt;&lt;hr&gt;PK id_grupo_tensao (1, 2)&lt;br&gt;nome_grupo (Baixa Tensão; Muito Alta, Alta e Média Tensões)" vertex="1">
+          <mxGeometry height="100" width="290" x="559" y="49" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_tempo" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;dim_tempo&lt;/b&gt;&lt;hr&gt;PK id_data (ex.: 202104)&lt;br&gt;mes (nº e nome)&lt;br&gt;trimestre&lt;br&gt;ano&lt;br&gt;estacao (opcional)&lt;hr&gt;&lt;i&gt;Hierarquia: Ano &gt; Trimestre &gt; Mês&lt;/i&gt;" vertex="1">
+          <mxGeometry height="170" width="290" x="1016" y="14" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_energia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;fact_energia_sustentavel&lt;/b&gt;&lt;hr&gt;FK PK id_data&lt;br&gt;FK PK cod_freguesia&lt;br&gt;FK PK id_tecnologia&lt;br&gt;FK PK id_nivel_tensao&lt;hr&gt;Medidas: n_instalacoes, potencia_kw&lt;br&gt;(soma na geografia, tecnologia e tensão; último valor ou média no tempo)&lt;hr&gt;&lt;i&gt;Grão: mês x freguesia x tecnologia x nível de tensão&lt;/i&gt;" vertex="1">
+          <mxGeometry height="210" width="290" x="30" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_consumo" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;fact_consumo&lt;/b&gt;&lt;hr&gt;FK PK id_data&lt;br&gt;FK PK cod_freguesia&lt;br&gt;FK PK id_grupo_tensao&lt;hr&gt;Medida: energia_ativa (soma)&lt;hr&gt;&lt;i&gt;Grão: mês x freguesia x grupo de tensão&lt;/i&gt;" vertex="1">
+          <mxGeometry height="170" width="290" x="563" y="287" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_populacao" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;fact_populacao&lt;/b&gt;&lt;hr&gt;FK PK id_data (dezembro)&lt;br&gt;FK PK cod_concelho&lt;hr&gt;Medidas: total, homens, mulheres&lt;br&gt;(soma na geografia; média ou último valor no tempo)&lt;hr&gt;&lt;i&gt;Grão: ano x município&lt;/i&gt;" vertex="1">
+          <mxGeometry height="170" width="290" x="1020" y="264" as="geometry" />
+        </mxCell>
+        <mxCell id="fact_temperatura" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#ffe6cc;strokeColor=#d79b00;" value="&lt;b&gt;fact_temperatura&lt;/b&gt;&lt;hr&gt;FK PK id_data&lt;br&gt;FK PK cod_distrito&lt;hr&gt;Medidas: temp_media (média), temp_min (mínimo), temp_max (máximo), normal_8110 (média), normal_9120 (média)&lt;hr&gt;&lt;i&gt;Grão: mês x distrito&lt;/i&gt;" vertex="1">
+          <mxGeometry height="170" width="290" x="1353" y="264" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_tecnologia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="&lt;b&gt;dim_tecnologia&lt;/b&gt;&lt;hr&gt;PK id_tecnologia (1, 2)&lt;br&gt;nome_tecnologia (Solar; Outras)" vertex="1">
+          <mxGeometry height="90" width="290" x="20" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_freguesia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;dim_freguesia&lt;/b&gt;&lt;hr&gt;PK cod_freguesia (texto)&lt;br&gt;FK cod_concelho&lt;br&gt;nome_freguesia&lt;br&gt;(&quot;Não definida&quot; se vazio)" vertex="1">
+          <mxGeometry height="120" width="290" x="350" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_concelho" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;dim_concelho&lt;/b&gt;&lt;hr&gt;PK cod_concelho (texto, 4 dígitos)&lt;br&gt;FK cod_distrito&lt;br&gt;nome_concelho&lt;br&gt;(&quot;Outros&quot; por distrito)" vertex="1">
+          <mxGeometry height="120" width="290" x="810" y="590" as="geometry" />
+        </mxCell>
+        <mxCell id="dim_distrito" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;spacingLeft=8;fillColor=#d5e8d4;strokeColor=#82b366;" value="&lt;b&gt;dim_distrito&lt;/b&gt;&lt;hr&gt;PK cod_distrito (texto)&lt;br&gt;nome_distrito" vertex="1">
+          <mxGeometry height="90" width="290" x="1310" y="605" as="geometry" />
+        </mxCell>
+        <mxCell id="e1" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="id_data">
+          <mxGeometry relative="1" x="-0.6332" y="18" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="988.1" y="377" />
+              <mxPoint x="988.1" y="86" />
+            </Array>
+            <mxPoint x="849" y="377" as="sourcePoint" />
+            <mxPoint x="1016" y="86" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" edge="1" parent="1" source="fact_populacao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_tempo" value="id_data (dezembro)">
+          <mxGeometry relative="1" x="0.05" y="-60" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1155" y="227.5" />
+              <mxPoint x="1155" y="227.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" edge="1" parent="1" source="fact_temperatura" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_tempo" value="id_data">
+          <mxGeometry relative="1" x="0.1435" y="-33" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1445" y="43.2" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" edge="1" parent="1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" value="id_data">
+          <mxGeometry relative="1" x="0.2786" y="10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="9.6" y="249.4" />
+              <mxPoint x="9.6" y="34" />
+            </Array>
+            <mxPoint x="30" y="249.39999999999964" as="sourcePoint" />
+            <mxPoint x="1010" y="34" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" edge="1" parent="1" source="fact_consumo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_grupo_tensao" value="id_grupo_tensao">
+          <mxGeometry relative="1" x="0.122" y="-47" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e6" edge="1" parent="1" source="fact_energia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_nivel_tensao" value="id_nivel_tensao">
+          <mxGeometry relative="1" x="0.0856" y="-49" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="175" y="154.64" />
+              <mxPoint x="175" y="154.64" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e7" edge="1" parent="1" source="dim_nivel_tensao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_grupo_tensao" value="id_grupo_tensao">
+          <mxGeometry relative="1" x="0.1033" y="13" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e8" edge="1" parent="1" source="fact_energia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_tecnologia" value="id_tecnologia">
+          <mxGeometry relative="1" x="-0.1694" y="46" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="165" y="486.07" />
+              <mxPoint x="165" y="486.07" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e9" edge="1" parent="1" source="fact_consumo" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_freguesia" value="cod_freguesia">
+          <mxGeometry relative="1" x="0.1991" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="708" y="523.5" />
+              <mxPoint x="545.3" y="523.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e10" edge="1" parent="1" source="fact_energia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_freguesia" value="cod_freguesia">
+          <mxGeometry relative="1" x="-0.4388" y="12" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e11" edge="1" parent="1" source="fact_populacao" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_concelho" value="cod_concelho">
+          <mxGeometry relative="1" x="0.0219" y="-10" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1165" y="517.5" />
+              <mxPoint x="955" y="517.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e12" edge="1" parent="1" source="fact_temperatura" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_distrito" value="cod_distrito">
+          <mxGeometry relative="1" x="0.0422" y="-16" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1498" y="519.5" />
+              <mxPoint x="1422.4" y="519.5" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e13" edge="1" parent="1" source="dim_freguesia" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_concelho" value="cod_concelho">
+          <mxGeometry relative="1" x="0.0357" y="9" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e14" edge="1" parent="1" source="dim_concelho" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=ERone;startArrow=ERmany;endFill=0;startFill=0;" target="dim_distrito" value="cod_distrito">
+          <mxGeometry relative="1" x="0.0357" y="10" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legenda" parent="1" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;fontSize=11;" value="&lt;b&gt;Legenda:&lt;/b&gt; laranja = tabelas de factos; azul = dimensões partilhadas; verde = geografia (distrito &gt; concelho &gt; freguesia). Tensão: grupo (2) &gt; nível (4). Chaves geográficas como texto (preservar zeros à esquerda). dim_tempo: nov/2020 a set/2026." vertex="1">
+          <mxGeometry height="40" width="1200" x="20" y="740" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

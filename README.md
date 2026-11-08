@@ -2,7 +2,7 @@
 
 Trabalho prático de Sistemas de Informação: desenho de um modelo multidimensional (data warehouse) que cruza dados de consumo de energia, produção solar para autoconsumo, temperatura e população, por município/freguesia em Portugal Continental.
 
-**Grupo:** Tiago Sanina (n.º 20318), Benvinda, Soares
+**Grupo:** Tiago Sanina, Benvinda, Soares
 **Entrega:** 16/11/2026
 **Tema:** Energia (E-REDES + IPMA + Pordata)
 

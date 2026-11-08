@@ -4,7 +4,7 @@ Trabalho prático de Sistemas de Informação: desenho de um modelo multidimensi
 
 **Grupo:** Tiago Sanina, Benvinda, Soares
 **Entrega:** 16/11/2026
-**Tema:** Energia (E-REDES + IPMA + Pordata)
+**Tema:** Energia (E-REDES)
 
 ## Fontes de dados
 

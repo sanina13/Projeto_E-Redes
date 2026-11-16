@@ -2,9 +2,15 @@
 
 Trabalho prático de Sistemas de Informação: desenho de um modelo multidimensional (data warehouse) que cruza dados de consumo de energia, produção solar para autoconsumo, temperatura e população, por município/freguesia em Portugal Continental.
 
-**Grupo:** Tiago Sanina, Benvinda, Soares
-**Entrega:** 16/11/2026
-**Tema:** Energia (E-REDES)
+| | |
+|---|---|
+| **Grupo** | Tiago Sanina, Benvinda, Soares |
+| **Tema** | Energia (E-REDES) |
+| **Entrega** | 16/11/2026 |
+
+## Objetivo
+
+Construir um modelo multidimensional que permita analisar o consumo de energia elétrica e a produção solar para autoconsumo (UPAC) em Portugal Continental, relacionando-os com fatores de contexto como a temperatura e a população residente, a diferentes níveis de granularidade geográfica e temporal.
 
 ## Fontes de dados
 
@@ -19,18 +25,20 @@ Trabalho prático de Sistemas de Informação: desenho de um modelo multidimensi
 
 Constelação de factos (*fact constellation*) com a dimensão Geografia em floco de neve (Distrito > Concelho > Freguesia), com quatro tabelas de factos:
 
-- `fact_consumo` — energia ativa faturada (mês × freguesia × nível de tensão)
-- `fact_temperatura` — temperatura e normais climatológicas (mês × distrito)
-- `fact_populacao` — população residente (ano × município)
-- `fact_energia_sustentavel` — produção UPAC/solar (mês × freguesia × tecnologia × nível de tensão)
+| Tabela de factos | Conteúdo | Grão |
+|---|---|---|
+| `fact_consumo` | Energia ativa faturada | mês × freguesia × nível de tensão |
+| `fact_temperatura` | Temperatura e normais climatológicas | mês × distrito |
+| `fact_populacao` | População residente | ano × município |
+| `fact_energia_sustentavel` | Produção UPAC/solar | mês × freguesia × tecnologia × nível de tensão |
 
-A justificação detalhada de todas as decisões (tipo de modelo, grão e aditividade das medidas, dimensões, ligações entre factos e dimensões, tratamento de dados no ETL e limitações) está em [Ficheiros_para_relatório/decisoes_modelo_tp1.md](Ficheiros_para_relatório/decisoes_modelo_tp1.md).
+O diagrama completo do modelo está em [Diagrama/modelo_tp1.jpg](Diagrama/modelo_tp1.jpg) (fonte editável em [Diagrama/modelo_tp1.drawio](Diagrama/modelo_tp1.drawio)). A justificação detalhada de todas as decisões — tipo de modelo, grão e aditividade das medidas, dimensões, ligações entre factos e dimensões, tratamento de dados no ETL e limitações — está documentada em [relatorio/](relatorio/).
 
 ## Estrutura do repositório
 
 ```
 ├── Diagrama/                          # Diagrama do modelo multidimensional (draw.io + imagem)
-├── Ficheiros_para_relatório/          # Notas e justificações de decisões, para o relatório
+├── relatorio/                         # Relatório final e justificação das decisões do modelo
 ├── dados/
 │   ├── exploracao_fontes.pbix         # Exploração inicial dos dados no Power BI
 │   └── ficheirosBrutos/               # Dados brutos das fontes (E-REDES, IPMA, Pordata, UPAC)
@@ -40,5 +48,7 @@ A justificação detalhada de todas as decisões (tipo de modelo, grão e aditiv
 
 ## Ferramentas
 
+- **Github** — Para controlo de versões
+- **Trello** — https://trello.com/b/a35TObFL/si-tp1-e-redes-data-warehouse-olap
 - **Power BI** — exploração dos dados e construção do modelo
 - **draw.io** — diagrama do modelo multidimensional
